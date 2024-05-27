@@ -2553,3 +2553,142 @@ Response Headers: {"server":"ZGS","date":"Mon, 27 May 2024 10:02:33 GMT","conten
 [debug] [2024-05-27T10:02:35.849Z] : Response Body : {"status":"failure","data":{"error_code":"MORE_THAN_MAX_LENGTH","message":"Please check if the length of the input is in the correct range"}}
 
 [debug] [2024-05-27T10:02:35.852Z] : Unable to send debug log to server: HTTP Error: 400, Please check if the length of the input is in the correct range
+[debug] [2024-05-27T10:23:30.098Z] : 
+[debug] [2024-05-27T10:23:30.099Z] : ----------------------------------------------------------------------
+[debug] [2024-05-27T10:23:30.099Z] : Command:      C:\Program Files\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\zcatalyst-cli\lib\bin\catalyst.js serve
+[debug] [2024-05-27T10:23:30.099Z] : CLI Version:  1.17.5
+[debug] [2024-05-27T10:23:30.100Z] : Platform:     win32
+[debug] [2024-05-27T10:23:30.100Z] : Node Version: v20.11.1
+[debug] [2024-05-27T10:23:30.100Z] : Time:         Mon May 27 2024 15:53:30 GMT+0530 (India Standard Time)
+[debug] [2024-05-27T10:23:30.100Z] : ----------------------------------------------------------------------
+[debug] [2024-05-27T10:23:30.100Z] : 
+[debug] [2024-05-27T10:23:30.556Z] : > authorizing via signed-in user option
+[debug] [2024-05-27T10:23:30.556Z] : > command requires scopes: ["ZohoCatalyst.projects.ALL","ZohoCatalyst.functions.ALL","ZohoCatalyst.functions.EXECUTE","ZohoCatalyst.webapp.ALL","ZohoCatalyst.pdfshot.execute"]
+[debug] [2024-05-27T10:23:30.564Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.com/baas/v1/project/15205000000101011 
+
+[debug] [2024-05-27T10:23:31.671Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Mon, 27 May 2024 10:23:29 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","set-cookie":["46512fd555=00fd3a8cbff58bc9307e4ac5869875ce; Path=/","ZD_CSRF_TOKEN=7809c607-25e5-4a5f-9aa7-a805d1bc7bff;path=/;SameSite=None;Secure;priority=high","_zcsr_tmp=7809c607-25e5-4a5f-9aa7-a805d1bc7bff;path=/;SameSite=Strict;Secure;priority=high"],"x-content-type-options":"nosniff","x-xss-protection":"1","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=63072000"}
+
+[debug] [2024-05-27T10:23:31.677Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.com/baas/v1/project/15205000000101011/environment 
+
+[debug] [2024-05-27T10:23:32.033Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Mon, 27 May 2024 10:23:29 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","set-cookie":["46512fd555=bbdfb771565421abbe10f7a180903d28; Path=/","ZD_CSRF_TOKEN=0968f1a8-6090-4edc-90c0-d295f68e5cff;path=/;SameSite=None;Secure;priority=high","_zcsr_tmp=0968f1a8-6090-4edc-90c0-d295f68e5cff;path=/;SameSite=Strict;Secure;priority=high"],"x-content-type-options":"nosniff","x-xss-protection":"1","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=63072000"}
+
+[debug] [2024-05-27T10:23:32.170Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.com/baas/v1/project/15205000000101011/function 
+Query params: {"type":"basicio,event,cron,applogic,integration,browser_logic"}
+
+[debug] [2024-05-27T10:23:32.541Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Mon, 27 May 2024 10:23:30 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","set-cookie":["46512fd555=63dd9cf89a6678b816d9580ec827ee61; Path=/","ZD_CSRF_TOKEN=e60f418c-8a2d-4aea-a2fa-264f8520dab5;path=/;SameSite=None;Secure;priority=high","_zcsr_tmp=e60f418c-8a2d-4aea-a2fa-264f8520dab5;path=/;SameSite=Strict;Secure;priority=high"],"x-content-type-options":"nosniff","x-xss-protection":"1","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=63072000"}
+
+[debug] [2024-05-27T10:23:32.547Z] : unknown eol undefined hence skipping check
+[debug] [2024-05-27T10:23:32.548Z] : unknown eol undefined hence skipping check
+[info] [2024-05-27T10:23:35.196Z] : [react-plugin]: Starting the development server...
+
+[info] [2024-05-27T10:23:35.197Z] : 
+[info] [2024-05-27T10:23:35.197Z] : i Client[react-app]: Plugin : "zcatalyst-cli-plugin-react" is used for client serve
+[info] [2024-05-27T10:23:35.198Z] : 
+[info] [2024-05-27T10:23:36.423Z] : 
+[info] [2024-05-27T10:23:36.423Z] :  >>>>>>>>>>>>>> BasicIO <<<<<<<<<<<<<< 
+[info] [2024-05-27T10:23:36.424Z] : i basicio: http://localhost:3000/server/basicio/execute
+[info] [2024-05-27T10:23:36.424Z] : 
+[info] [2024-05-27T10:23:36.424Z] : 
+[info] [2024-05-27T10:23:36.424Z] :  >>>>>>>>>>>>> AdvancedIO <<<<<<<<<<<< 
+[info] [2024-05-27T10:23:36.424Z] : i service_handling_function: http://localhost:3000/server/service_handling_function/
+[info] [2024-05-27T10:23:36.424Z] : 
+[info] [2024-05-27T10:23:36.424Z] : 
+[info] [2024-05-27T10:23:36.424Z] :  >>>>>>>>>>>>> Web Client <<<<<<<<<<<<
+[info] [2024-05-27T10:23:36.425Z] : i client[react-app]: http://localhost:3000/app/
+[info] [2024-05-27T10:23:36.425Z] : 
+[info] [2024-05-27T10:23:37.769Z] : [react-plugin]: Compiled with warnings.
+
+[info] [2024-05-27T10:23:37.769Z] : [react-plugin]: Failed to parse source map from 'C:\catalyst project\serviceHandling\react-app\node_modules\@react-aria\ssr\dist\SSRProvider.mjs.map' file: Error: ENOENT: no such file or directory, open 'C:\catalyst project\serviceHandling\react-app\node_modules\@react-aria\ssr\dist\SSRProvider.mjs.map'
+[info] [2024-05-27T10:23:37.770Z] : [react-plugin]: 
+Search for the keywords to learn more about each warning.
+[info] [2024-05-27T10:23:37.770Z] : [react-plugin]: To ignore, add // eslint-disable-next-line to the line before.
+
+[info] [2024-05-27T10:26:16.158Z] : [react-plugin]: Compiling...
+[info] [2024-05-27T10:26:17.900Z] : [react-plugin]: Compiled with warnings.
+
+[info] [2024-05-27T10:26:17.904Z] : [react-plugin]: Failed to parse source map from 'C:\catalyst project\serviceHandling\react-app\node_modules\@react-aria\ssr\dist\SSRProvider.mjs.map' file: Error: ENOENT: no such file or directory, open 'C:\catalyst project\serviceHandling\react-app\node_modules\@react-aria\ssr\dist\SSRProvider.mjs.map'
+
+[eslint] 
+src\component\InvoiceForm.jsx
+  Line 1:17:    'useEffect' is defined but never used                                                                                                                                                                                                                                                                                                                                     no-unused-vars
+  Line 11:10:   'materialName' is assigned a value but never used                                                                                                                                                                                                                                                                                                                         no-unused-vars
+  Line 11:24:   'setMaterialName' is assigned a value but never used                                                                                                                                                                                                                                                                                                                      no-unused-vars
+  Line 12:10:   'receivedDate' is assigned a value but never used                                                                                                                                                                                                                                                                                                                         no-unused-vars
+  Line 12:24:   'setReceivedDate' is assigned a value but never used                                                                                                                                                                                                                                                                                                                      no-unused-vars
+  Line 13:10:   'quantity' is assigned a value but never used                                                                                                                                                                                                                                                                                                                             no-unused-vars
+  Line 13:20:   'setQuantity' is assigned a value but never used                                                                                                                                                                                                                                                                                                                          no-unused-vars
+  Line 14:10:   'condition' is assigned a value but never used                                                                                                                                                                                                                                                                                                                            no-unused-vars
+  Line 14:21:   'setCondition' is assigned a value but never used                                                                                                                                                                                                                                                                                                                         no-unused-vars
+  Line 15:10:   'ticketId' is assigned a value but never used                                                                                                                                                                                                                                                                                                                             no-unused-vars
+  Line 15:20:   'setTicketId' is assigned a value but never used                                                                                                                                                                                                                                                                                                                          no-unused-vars
+  Line 16:10:   'scrapData' is assigned a value but never used                                                                                                                                                                                                                                                                                                                            no-unused-vars
+  Line 16:21:   'setScrapData' is assigned a value but never used                                                                                                                                                                                                                                                                                                                         no-unused-vars
+  Line 17:10:   'invoiceNumberRow' is assigned a value but never used                                                                                                                                                                                                                                                                                                                     no-unused-vars
+  Line 17:28:   'setInvoiceNumberRow' is assigned a value but never used                                                                                                                                                                                                                                                                                                                  no-unused-vars
+  Line 25:10:   'fileList' is assigned a value but never used                                                                                                                                                                                                                                                                                                                             no-unused-vars
+  Line 27:9:    'onChange' is assigned a value but never used                                                                                                                                                                                                                                                                                                                             no-unused-vars
+  Line 38:9:    'customRequest' is assigned a value but never used                                                                                                                                                                                                                                                                                                                        no-unused-vars
+  Line 102:9:   'handlePostData' is assigned a value but never used                                                                                                                                                                                                                                                                                                                       no-unused-vars
+  Line 213:27:  Array.prototype.map() expects a return value from arrow function                                                                                                                                                                                                                                                                                                          array-callback-return
+  Line 332:27:  The href attribute is required for an anchor to be keyboard accessible. Provide a valid, navigable address as the href value. If you cannot provide an href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+[info] [2024-05-27T10:26:17.905Z] : [react-plugin]: 
+Search for the keywords to learn more about each warning.
+[info] [2024-05-27T10:26:17.905Z] : [react-plugin]: To ignore, add // eslint-disable-next-line to the line before.
+
+[debug] [2024-05-27T10:26:18.225Z] : > refreshing access token <
+[debug] [2024-05-27T10:26:18.233Z] : >>>> HTTP REQUEST : POST https://accounts.zoho.com/oauth/v2/token 
+<request body omitted>
+
+[debug] [2024-05-27T10:26:19.507Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Mon, 27 May 2024 10:26:17 GMT","content-type":"application/json;charset=UTF-8","content-length":"1945","connection":"keep-alive","set-cookie":["b266a5bf57=a711b6da0e6cbadb5e254290f114a026; Path=/","iamcsr=2ec9cc59-8f8c-4d77-bf9d-52769a6b9de9;path=/;SameSite=None;Secure;priority=high","_zcsr_tmp=2ec9cc59-8f8c-4d77-bf9d-52769a6b9de9;path=/;SameSite=Strict;Secure;priority=high"],"cache-control":"no-store","x-content-type-options":"nosniff","pragma":"no-cache","x-frame-options":"SAMEORIGIN","vary":"accept-encoding","content-language":"en-US","strict-transport-security":"max-age=63072000"}
+
+[info] [2024-05-27T10:28:16.943Z] : [react-plugin]: Compiling...
+[info] [2024-05-27T10:28:17.515Z] : [react-plugin]: Compiled with warnings.
+
+[info] [2024-05-27T10:28:17.520Z] : [react-plugin]: Failed to parse source map from 'C:\catalyst project\serviceHandling\react-app\node_modules\@react-aria\ssr\dist\SSRProvider.mjs.map' file: Error: ENOENT: no such file or directory, open 'C:\catalyst project\serviceHandling\react-app\node_modules\@react-aria\ssr\dist\SSRProvider.mjs.map'
+
+[eslint] 
+src\component\InvoiceForm.jsx
+  Line 1:17:    'useEffect' is defined but never used                                                                                                                                                                                                                                                                                                                                     no-unused-vars
+  Line 11:10:   'materialName' is assigned a value but never used                                                                                                                                                                                                                                                                                                                         no-unused-vars
+  Line 11:24:   'setMaterialName' is assigned a value but never used                                                                                                                                                                                                                                                                                                                      no-unused-vars
+  Line 12:10:   'receivedDate' is assigned a value but never used                                                                                                                                                                                                                                                                                                                         no-unused-vars
+  Line 12:24:   'setReceivedDate' is assigned a value but never used                                                                                                                                                                                                                                                                                                                      no-unused-vars
+  Line 13:10:   'quantity' is assigned a value but never used                                                                                                                                                                                                                                                                                                                             no-unused-vars
+  Line 13:20:   'setQuantity' is assigned a value but never used                                                                                                                                                                                                                                                                                                                          no-unused-vars
+  Line 14:10:   'condition' is assigned a value but never used                                                                                                                                                                                                                                                                                                                            no-unused-vars
+  Line 14:21:   'setCondition' is assigned a value but never used                                                                                                                                                                                                                                                                                                                         no-unused-vars
+  Line 15:10:   'ticketId' is assigned a value but never used                                                                                                                                                                                                                                                                                                                             no-unused-vars
+  Line 15:20:   'setTicketId' is assigned a value but never used                                                                                                                                                                                                                                                                                                                          no-unused-vars
+  Line 16:10:   'scrapData' is assigned a value but never used                                                                                                                                                                                                                                                                                                                            no-unused-vars
+  Line 16:21:   'setScrapData' is assigned a value but never used                                                                                                                                                                                                                                                                                                                         no-unused-vars
+  Line 17:10:   'invoiceNumberRow' is assigned a value but never used                                                                                                                                                                                                                                                                                                                     no-unused-vars
+  Line 17:28:   'setInvoiceNumberRow' is assigned a value but never used                                                                                                                                                                                                                                                                                                                  no-unused-vars
+  Line 25:10:   'fileList' is assigned a value but never used                                                                                                                                                                                                                                                                                                                             no-unused-vars
+  Line 27:9:    'onChange' is assigned a value but never used                                                                                                                                                                                                                                                                                                                             no-unused-vars
+  Line 38:9:    'customRequest' is assigned a value but never used                                                                                                                                                                                                                                                                                                                        no-unused-vars
+  Line 102:9:   'handlePostData' is assigned a value but never used                                                                                                                                                                                                                                                                                                                       no-unused-vars
+  Line 213:27:  Array.prototype.map() expects a return value from arrow function                                                                                                                                                                                                                                                                                                          array-callback-return
+  Line 328:27:  The href attribute is required for an anchor to be keyboard accessible. Provide a valid, navigable address as the href value. If you cannot provide an href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+[info] [2024-05-27T10:28:17.521Z] : [react-plugin]: 
+Search for the keywords to learn more about each warning.
+[info] [2024-05-27T10:28:17.521Z] : [react-plugin]: To ignore, add // eslint-disable-next-line to the line before.
+
+[info] [2024-05-27T10:34:08.837Z] : Shutting down server
+[info] [2024-05-27T10:34:08.923Z] : 
+[info] [2024-05-27T10:34:08.924Z] : √ Shutdown complete
+[debug] [2024-05-27T10:34:08.924Z] : NO ERRORS REGISTERED
+[debug] [2024-05-27T10:34:08.924Z] : EXEC ENDED with event: serve, message: success
+[debug] [2024-05-27T10:34:08.925Z] : TOTAL DURATION OF COMMAND EXEC : 638376
+[debug] [2024-05-27T10:34:08.976Z] : >>>> HTTP REQUEST : POST https://api.catalyst.zoho.com/baas/v1/cli/logs 
+<request body omitted>
+
+[debug] [2024-05-27T10:34:13.201Z] : <<<< HTTP RESPONSE : 400
+Response Headers: {"server":"ZGS","date":"Mon, 27 May 2024 10:34:11 GMT","content-type":"application/json;charset=ISO-8859-1","content-length":"141","connection":"keep-alive","set-cookie":["46512fd555=63dd9cf89a6678b816d9580ec827ee61; Path=/","JSESSIONID=90C43BE8FFEF481F563E7187B9D89455; Path=/; Secure; HttpOnly"],"x-content-type-options":"nosniff","x-xss-protection":"1","x-frame-options":"DENY"}
+
+[debug] [2024-05-27T10:34:13.205Z] : Response Body : {"status":"failure","data":{"error_code":"MORE_THAN_MAX_LENGTH","message":"Please check if the length of the input is in the correct range"}}
+
+[debug] [2024-05-27T10:34:13.207Z] : Unable to send debug log to server: HTTP Error: 400, Please check if the length of the input is in the correct range

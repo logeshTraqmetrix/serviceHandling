@@ -223,7 +223,6 @@ const InvoiceForm = () => {
             method: 'POST',
             body: fileObj,
           });
-    
           const data = await response.json();
     
           if (response.status === 200) {
@@ -235,13 +234,10 @@ const InvoiceForm = () => {
         }
       };
       
-
       uploadFile()
       })
       // const response = await axios.post('/api/scrap', { scrapForms });
       // console.log('Response:', response.data);
-
-      
     } catch (error) {
       console.error('There was an error!', error);
     }
@@ -434,9 +430,9 @@ const InvoiceForm = () => {
           Submit2
         </Button>
 
-        <Button variant="success" className="float-end" onClick={handlePostData}>
+        {/* <Button variant="success" className="float-end" onClick={handlePostData}>
           Submit
-        </Button>
+        </Button> */}
       </Form>
     </div>
   );

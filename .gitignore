@@ -1,4 +1,5 @@
 react-app/node_modules
 functions/service_handling_function/node_modules
+functions/BasicIo/node_modules
 
 /build

@@ -1,0 +1,42 @@
+/* body {
+   font-size: 20px;
+ }
+  */
+ .card {
+   max-width: 500px;
+   margin: auto;
+   text-align: center;
+   font-family: Arial, sans-serif;
+  
+ }
+ 
+ .title {
+   font-size: 23px;
+   color: black;
+ }
+ 
+ button {
+   border: none;
+   outline: 0;
+   display: inline-block;
+   padding: 8px;
+   color: white;
+   text-align: center;
+   cursor: pointer;
+   /* width: 50%; */
+   font-size: 18px;
+   border-radius: 8px;
+   background-color: black;
+ }
+ 
+ a {
+   text-decoration: none;
+   font-size: 22px;
+   color: black;
+ }
+ 
+ button:hover,
+ a:hover {
+   opacity: 0.7;
+ }
+ 

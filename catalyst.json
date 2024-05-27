@@ -1,7 +1,8 @@
 {
   "functions": {
     "targets": [
-      "service_handling_function"
+      "service_handling_function",
+      "basicio"
     ],
     "ignore": [],
     "source": "functions"

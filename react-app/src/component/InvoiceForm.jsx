@@ -19,9 +19,7 @@ const InvoiceForm = () => {
   const [invoiceDate, setInvoiceDate] = useState('')
   const [customerName, setCustomerName] = useState('')
   const [ticketNumber, setTicketNumber] = useState('')
-  // const [product, setProduct] = useState('')
-
-
+  const [product, setProduct] = useState('')
   const [fileList, setFileList] = useState([]);
 
   const onChange = (info) => {
@@ -43,52 +41,19 @@ const InvoiceForm = () => {
     }, 1000);
   };
 
-  // const handleSubmit = () => {
-  //   const newFormData = {
-  //     materialName: materialName,
-  //     receivedDate: receivedDate,
-  //     quantity: quantity,
-  //     condition: condition,
-  //     ticketId: ticketId,
-  //     // Add more fields as needed
-  //   };
+  const handleSubmit = () => {
+    const newFormData = {
+      materialName: materialName,
+      receivedDate: receivedDate,
+      quantity: quantity,
+      condition: condition,
+      ticketId: ticketId,
+      // Add more fields as needed
+    };
 
-  //   setScrapData((prevScrapData) => [...prevScrapData, newFormData]);
-  //   handleCloseModal();
-  // };
-
-  //   useEffect(() => {
-  //     console.log(scrapData); // This will log the updated state every time it changes
-  //   }, [scrapData]);
-
-  // const [fields, setFields] = useState([
-  //   { uniqueKey: Date.now(), invoiceNumberRowId: 0, materialName: "", quantity: "", price: "" },
-  // ]);
-
-  // const addField = () => {
-  //   setFields([
-  //     ...fields,
-  //     { uniqueKey: Date.now(), invoiceNumberRowId: 0, materialName: "", quantity: "", price: "" },
-  //   ]);
-  // };
-
-  // const removeField = (uniqueKey) => {
-  //   setFields(fields.filter((field) => field.uniqueKey !== uniqueKey));
-  // };
-
-  // const handleChange = (index, event) => {
-  //   const { name, value } = event.target;
-  //   const newFields = fields.map((field, i) => {
-  //     if (i === index) {
-  //       return { ...field, [name]: value };
-  //     }
-  //     return field;
-  //   });
-  //   setFields(newFields);
-  // };
-
-
-
+    setScrapData((prevScrapData) => [...prevScrapData, newFormData]);
+  
+  };
 
 
   //   const handleDateChange = (e) => {
@@ -105,7 +70,8 @@ const InvoiceForm = () => {
       invoiceDate,
       customerName,
       ticketNumber,
-      product
+      product,
+      fileList:[]
     };
 
     console.log(invoicePayload);
@@ -139,7 +105,7 @@ const InvoiceForm = () => {
   }
 
 
-  const [product, setProduct] = useState('');
+  const [Sparce, setSparce] = useState('');
   const [fields, setFields] = useState([{ uniqueKey: Date.now(), materialName: '', quantity: '', price: '' }]);
 
   const handleChange = (index, event) => {
@@ -166,8 +132,8 @@ const InvoiceForm = () => {
       receivedDate: '',
       qty: 0,
       condition: '',
-      ticket: '',
-      uploadList: []
+      ticket: ''
+     
     }
   ]);
 
@@ -192,8 +158,8 @@ const InvoiceForm = () => {
         receivedDate: '',
         qty: 0,
         condition: '',
-        ticket: '',
-        uploadList: []
+        ticket: ''
+      
       }
     ]);
   };
@@ -205,43 +171,46 @@ const InvoiceForm = () => {
 
 
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      console.log(scrapForms)
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     console.log(scrapForms)
 
-      scrapForms.map((obj)=>{
-        // console.log(obj.uploadList[0])
-   
-      const uploadFile = async () => {
-        try {
-          console.log( obj.uploadList[0])
-          const fileObj = new FormData();
-          fileObj.append('data', obj.uploadList[0]);
-    
-          const response = await fetch('/server/service_handling_function/uploadfile', {
-            method: 'POST',
-            body: fileObj,
-          });
-          const data = await response.json();
-    
-          if (response.status === 200) {
-            console.log(data.id)
-          }
-        } catch (e) {
-          console.log(e);
-          alert('Error. Please try again after sometime.');
-        }
-      };
-      
-      uploadFile()
-      })
-      // const response = await axios.post('/api/scrap', { scrapForms });
-      // console.log('Response:', response.data);
-    } catch (error) {
-      console.error('There was an error!', error);
-    }
-  };
+  //     scrapForms.map((obj)=>{
+  //       // console.log(obj.uploadList[0])
+
+  //     const uploadFile = async () => {
+  //       try {
+  //         console.log( obj.uploadList[0])
+  //         const fileObj = new FormData();
+  //         fileObj.append('data', obj.uploadList[0]);
+
+  //         const response = await fetch('/server/service_handling_function/uploadfile', {
+  //           method: 'POST',
+  //           body: fileObj,
+  //         });
+
+  //         const data = await response.json();
+
+  //         if (response.status === 200) {
+  //           console.log(data.id)
+  //         }
+  //       } catch (e) {
+  //         console.log(e);
+  //         alert('Error. Please try again after sometime.');
+  //       }
+  //     };
+
+  //     uploadFile()
+  //     })
+  //     // const response = await axios.post('/api/scrap', { scrapForms });
+  //     // console.log('Response:', response.data);
+
+
+  //   } catch (error) {
+  //     console.error('There was an error!', error);
+  //   }
+  // };
 
 
 
@@ -271,16 +240,28 @@ const InvoiceForm = () => {
           <Form.Label>Product</Form.Label>
           <Form.Control type="text" onChange={(e) => setProduct(e.target.value)} placeholder="Enter Ticket Number" />
         </Form.Group>
+        <Form.Group className="mb-3" controlId="formGroupEmail">
+          <Form.Label>Damaged Image</Form.Label>
+          <Upload
+            action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+            listType="picture-card"
+            fileList={fileList}
+            onChange={onChange}
+            customRequest={({ file, onSuccess }) => setTimeout(() => onSuccess("ok"), 0)}
+          >
+            {fileList.length === 0 && "+ Upload"}
+          </Upload>
+        </Form.Group>
         <Form.Group className="mb-3" controlId="formGroupAddress">
           <Form.Label>Enter Spares Subform</Form.Label>
-          <Form.Control as="select" >
+          <Form.Control as="select" onChange={(e) => setSparce(e.target.value)}>
             <option value="">Select an option</option>
             <option value="yes">Yes</option>
             <option value="no">No</option>
           </Form.Control>
         </Form.Group>
 
-        {product === 'yes' && (
+        {Sparce === 'yes' && (
           <div>
             <h4>Spares SubForm</h4>
             <div className="table-responsive">
@@ -400,16 +381,7 @@ const InvoiceForm = () => {
                     onChange={(e) => handleScrapFormChange(index, e)}
                     placeholder="Enter Ticket ID"
                   />
-                  <Form.Label>Damaged Image</Form.Label>
-                  <Upload
-                    action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
-                    listType="picture-card"
-                    fileList={scrapForm.uploadList}
-                    onChange={(fileList) => handleUploadChange(index, fileList)}
-                    customRequest={({ file, onSuccess }) => setTimeout(() => onSuccess("ok"), 0)}
-                  >
-                    {scrapForm.uploadList.length === 0 && "+ Upload"}
-                  </Upload>
+
                 </Form.Group>
                 {scrapForms.length > 1 && (
                   <Button
@@ -426,13 +398,13 @@ const InvoiceForm = () => {
             </Button>
           </>
         )}
-        <Button variant="success" className="float-end" onClick={handleSubmit}>
+        {/* <Button variant="success" className="float-end" onClick={handleSubmit}>
           Submit2
-        </Button>
-
-        {/* <Button variant="success" className="float-end" onClick={handlePostData}>
-          Submit
         </Button> */}
+
+        <Button variant="success" className="float-end" onClick={handlePostData}>
+          Submit
+        </Button>
       </Form>
     </div>
   );

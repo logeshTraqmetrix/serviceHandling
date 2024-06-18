@@ -9,6 +9,7 @@ const fileUpload = require('express-fileupload');
 const app = express();
 app.use(express.json());
 app.use(fileUpload());
+
 const os = require('os');
 
 const fs = require('fs');
@@ -333,60 +334,114 @@ function getDataFromCatalystDataStore(catalystApp, tableName, email) {
 }
 
 
-const FOLDER_ID = 15205000000103376
+// const FOLDER_ID = 15205000000103376
 
 
 
-// Middleware for parsing form data
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// // Middleware for parsing form data
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+
+// app.post('/uploadfile', async (req, res) => {
+//    try {
+//        console.log('Uploading file...');
+
+//        // Initialize Zoho Catalyst SDK using the request object
+//        const app = catalyst.initialize(req);
+//        console.log(req.files)
+
+//        // Check if file exists in request
+//        if (!req.files || !req.files.data) {
+//            throw new Error('No file uploaded');
+//        }
+
+//        // Move uploaded file to a temporary directory
+//        const tmpDir = os.tmpdir(); // Get system's temporary directory
+//        const tmpFilePath = `${tmpDir}/${req.files.data.name}`;
+//        await req.files.data.mv(tmpFilePath);
+
+//        // Upload file to Zoho Filestore
+//        const folderId = 15205000000103376; // Replace with your folder ID
+//        const config = {
+//            code: fs.createReadStream(tmpFilePath),
+//            name: req.files.data.name
+//        };
+
+//        const uploadPromise = app.filestore().folder(folderId).uploadFile(config);
+
+//        uploadPromise.then((fileObject) => {
+//            // Optionally delete the file from the temporary directory
+//            fs.unlink(tmpFilePath, (err) => {
+//                if (err) console.error('Error deleting temp file:', err);
+//            });
+
+//            // Send the file object to the frontend
+//            res.status(200).send(fileObject);
+//        }).catch((error) => {
+//            console.error('Error uploading file:', error);
+//            // Send error response
+//            res.status(500).send({
+//                status: 'error',
+//                message: 'Internal Server Error',
+//                error: error.message // Include error message in response
+//            });
+//        });
+//    } catch (error) {
+//        console.error('Error uploading file:', error);
+//        // Send error response
+//        res.status(500).send({
+//            status: 'error',
+//            message: 'Internal Server Error',
+//            error: error.message // Include error message in response
+//        });
+//    }
+// });
+
+
+//2
 
 app.post('/uploadfile', async (req, res) => {
    try {
-       console.log('Uploading file...');
+       console.log('Uploading files...');
 
        // Initialize Zoho Catalyst SDK using the request object
        const app = catalyst.initialize(req);
-       console.log(req.files)
+       const files = req.files;
+       console.log(files)
 
-       // Check if file exists in request
-       if (!req.files || !req.files.data) {
-           throw new Error('No file uploaded');
+       // Check if files exist in the request
+       if (!files) {
+           throw new Error('No files uploaded');
        }
 
-       // Move uploaded file to a temporary directory
-       const tmpDir = os.tmpdir(); // Get system's temporary directory
-       const tmpFilePath = `${tmpDir}/${req.files.data.name}`;
-       await req.files.data.mv(tmpFilePath);
+       const uploadPromises = Object.values(files).map(async file => {
+           const tmpDir = os.tmpdir(); // Get system's temporary directory
+           const tmpFilePath = `${tmpDir}/${file.name}`;
+           await file.mv(tmpFilePath);
 
-       // Upload file to Zoho Filestore
-       const folderId = 15205000000103376; // Replace with your folder ID
-       const config = {
-           code: fs.createReadStream(tmpFilePath),
-           name: req.files.data.name
-       };
+           // Upload file to Zoho Filestore
+           const folderId = 15205000000103376; // Replace with your folder ID
+           const config = {
+               code: fs.createReadStream(tmpFilePath),
+               name: file.name
+           };
 
-       const uploadPromise = app.filestore().folder(folderId).uploadFile(config);
-
-       uploadPromise.then((fileObject) => {
-           // Optionally delete the file from the temporary directory
-           fs.unlink(tmpFilePath, (err) => {
-               if (err) console.error('Error deleting temp file:', err);
-           });
-
-           // Send the file object to the frontend
-           res.status(200).send(fileObject);
-       }).catch((error) => {
-           console.error('Error uploading file:', error);
-           // Send error response
-           res.status(500).send({
-               status: 'error',
-               message: 'Internal Server Error',
-               error: error.message // Include error message in response
-           });
+           return app.filestore().folder(folderId).uploadFile(config)
+               .then(fileObject => {
+                   // Optionally delete the file from the temporary directory
+                   fs.unlink(tmpFilePath, (err) => {
+                       if (err) console.error('Error deleting temp file:', err);
+                   });
+                   return fileObject;
+               });
        });
+
+       const uploadedFiles = await Promise.all(uploadPromises);
+
+       // Send the file objects to the frontend
+       res.status(200).send(uploadedFiles);
    } catch (error) {
-       console.error('Error uploading file:', error);
+       console.error('Error uploading files:', error);
        // Send error response
        res.status(500).send({
            status: 'error',
@@ -395,193 +450,6 @@ app.post('/uploadfile', async (req, res) => {
        });
    }
 });
-
-
-// Endpoint for uploading a file
-// app.post('/uploadfile', async (req, res) => {
-//     try {
-//         console.log('Uploading file...');
-
-//         // Initialize Zoho Catalyst SDK using the request object
-//         const app = catalyst.initialize(req);
-//         console.log(req.files)
-
-//         // Check if file exists in request
-//         if (!req.files || !req.files.data) {
-//             throw new Error('No file uploaded');
-//         }
-
-//         // Move uploaded file to a temporary directory
-//         const tmpDir = os.tmpdir(); // Get system's temporary directory
-//         const tmpFilePath = `${tmpDir}/${req.files.data.name}`;
-//         await req.files.data.mv(tmpFilePath);
-
-//         // Upload file to Zoho Filestore
-//         const folderId = 15205000000103376; // Replace with your folder ID
-//         await app.filestore().folder(folderId).uploadFile({
-//             code: fs.createReadStream(tmpFilePath),
-//             name: req.files.data.name
-//         });
-
-//         // Optionally delete the file from the temporary directory
-//         fs.unlink(tmpFilePath, (err) => {
-//             if (err) console.error('Error deleting temp file:', err);
-//         });
-
-//         // Send success response
-//         res.status(200).send({
-//             status: 'success',
-//             message: 'File uploaded successfully'
-//         });
-//     } catch (error) {
-//         console.error('Error uploading file:', error);
-//         res.status(500).send({
-//             status: 'error',
-//             message: 'Internal Server Error',
-//             error: error.message // Include error message in response
-//         });
-//     }
-// });
-
-
-// app.post('/uploadfile', async (req, res) => {
-//    try {
-//        console.log('Uploading file...');
-//        const app = catalyst.initialize(req);
-      
-
-//        // Check if file exists in request
-//        if (!req.files || !req.files.data) {
-//            throw new Error('No file uploaded');
-//        }
-
-//        // Move uploaded file to a temporary directory
-//        const tmpDir = os.tmpdir(); // Get system's temporary directory
-//        const tmpFilePath = `${tmpDir}/${req.files.data.name}`;
-//        await req.files.data.mv(tmpFilePath);
-
-//        // Upload file to Zoho Filestore
-//        await app.filestore().folder(FOLDER_ID).uploadFile({
-//            code: fs.createReadStream(tmpFilePath),
-//            name: req.files.data.name
-//        });
-
-//        // Optionally delete the file from the temporary directory
-//        fs.unlink(tmpFilePath, (err) => {
-//            if (err) console.error('Error deleting temp file:', err);
-//        })
-
-//        // Send success response
-//        res.status(200).send({
-//            status: 'success',
-//            message: 'File uploaded successfully'
-//        });
-//    } catch (error) {
-//        console.error('Error uploading file:', error);
-//        res.status(500).send({
-//            status: 'error',
-//            message: 'Internal Server Error',
-//            error: error.message // Include error message in response
-//        });
-//    }
-// });
-
-
-
-
-
-// const FOLDER_ID = 15205000000103376;
-
-// app.post('/uploadfile', async (req, res) => {
-//   try {
-//     console.log('Uploading file...');
-//     // Assuming you're using Zoho Catalyst
-//     const app = catalyst.initialize(req);
-
-//     // Check if file exists in request
-//     if (!req.files || !req.files.data) {
-//       throw new Error('No file uploaded');
-//     }
-
-//     // Move uploaded file to a temporary directory
-//     const tmpDir = os.tmpdir(); // Get system's temporary directory
-//     const tmpFilePath = `${tmpDir}/${req.files.data.name}`;
-//     await req.files.data.mv(tmpFilePath);
-
-//     // Upload file to Zoho Filestore
-//     await app.filestore().folder(FOLDER_ID).uploadFile({
-//       code: fs.createReadStream(tmpFilePath),
-//       name: req.files.data.name
-//     });
-
-//     // Optionally delete the file from the temporary directory
-//     fs.unlink(tmpFilePath, (err) => {
-//       if (err) console.error('Error deleting temp file:', err);
-//     });
-
-//     // Send success response
-//     res.status(200).json({
-//       status: 'success',
-//       message: 'File uploaded successfully'
-//     });
-//   } catch (error) {
-//     console.error('Error uploading file:', error);
-//     res.status(500).json({
-//       status: 'error',
-//       message: error.message // Include error message in response
-//     });
-//   }
-// });
-
-
-
-// app.post('/uploadfile', async (req, res) => {
-//    try {
-//        console.log('Uploading file...');
-//        const catalystApp = catalyst.initialize(req);
-
-//        // Log request details
-//        console.log('Request Body:', req.body.data);
-//        console.log('Request Headers:', req.headers);
-//        console.log('Request Files:', req.files);
-
-//        // Check if file exists in request
-//        if (!req.files || !req.files.data) {
-//            throw new Error('No file uploaded');
-//        }
-
-//        console.log('File received:', req.files.data);
-
-//        // Move uploaded file to a temporary directory
-//        const tmpDir = os.tmpdir(); // Get system's temporary directory
-//        const tmpFilePath = `${tmpDir}/${req.files.data.name}`;
-//        await req.files.data.mv(tmpFilePath);
-
-//        // Upload file to Zoho Filestore
-//        await catalystApp.filestore().folder(FOLDER_ID).uploadFile({
-//            code: fs.createReadStream(tmpFilePath),
-//            name: req.files.data.name
-//        });
-
-//        // Optionally delete the file from the temporary directory
-//        fs.unlink(tmpFilePath, (err) => {
-//            if (err) console.error('Error deleting temp file:', err);
-//        });
-
-//        // Send success response
-//        res.status(200).send({
-//            status: 'success',
-//            message: 'File uploaded successfully'
-//        });
-//    } catch (error) {
-//        console.error('Error uploading file:', error);
-//        res.status(500).send({
-//            status: 'error',
-//            message: 'Internal Server Error',
-//            error: error.message // Include error message in response
-//        });
-//    }
-// });
 
 
 
